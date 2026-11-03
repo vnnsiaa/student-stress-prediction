@@ -1,0 +1,56 @@
+{
+  "nama_model": "DNN (MLPClassifier 64-32-16)",
+  "dataset": "Student Stress Prediction",
+  "fitur": [
+    "Study_Hours_Per_Day",
+    "Extracurricular_Hours_Per_Day",
+    "Sleep_Hours_Per_Day",
+    "Social_Hours_Per_Day",
+    "Physical_Activity_Hours_Per_Day",
+    "GPA"
+  ],
+  "target": "Stress_Level",
+  "kelas": [
+    "High",
+    "Low",
+    "Moderate"
+  ],
+  "rentang_fitur": {
+    "Study_Hours_Per_Day": [
+      5.0,
+      10.0
+    ],
+    "Extracurricular_Hours_Per_Day": [
+      0.0,
+      4.0
+    ],
+    "Sleep_Hours_Per_Day": [
+      5.0,
+      10.0
+    ],
+    "Social_Hours_Per_Day": [
+      0.0,
+      6.0
+    ],
+    "Physical_Activity_Hours_Per_Day": [
+      0.0,
+      13.0
+    ],
+    "GPA": [
+      2.24,
+      4.0
+    ]
+  },
+  "metrik": {
+    "accuracy": 0.96,
+    "f1_macro": 0.9521,
+    "f1_baseline": 0.2266,
+    "n_test": 400
+  },
+  "versi": {
+    "scikit-learn": "1.6.1",
+    "pandas": "2.2.3",
+    "numpy": "2.4.6",
+    "joblib": "1.6.0"
+  }
+}

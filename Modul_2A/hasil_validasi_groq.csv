@@ -1,0 +1,5 @@
+iterasi,model,accuracy,f1_macro,invalid,persen_invalid,n
+Iterasi 1 - Zero-shot,qwen/qwen3.8-27b,0.6,0.5556,0,0.0,30
+Iterasi 2 - Few-shot,qwen/qwen3.8-27b,0.8,0.8052,0,0.0,30
+Iterasi 3 - Few-shot + Profil Median,qwen/qwen3.8-27b,0.8333,0.8359,0,0.0,30
+Iterasi 4 - Few-shot + Decision Tree,qwen/qwen3.8-27b,1.0,1.0,0,0.0,30

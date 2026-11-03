@@ -1,0 +1,32 @@
+# API keys dan konfigurasi rahasia
+.env
+.env.*
+**/.env
+**/.env.*
+**/.streamlit/secrets.toml
+secrets.toml
+
+# Virtual environment Python
+.venv/
+**/.venv/
+venv/
+**/venv/
+
+# Cache Python
+__pycache__/
+**/__pycache__/
+*.pyc
+
+# Cache dan file lokal
+.pytest_cache/
+.streamlit/cache/
+.DS_Store
+Thumbs.db
+
+# Backup repository Git lama
+.git-backup/
+**/.git-backup/
+
+# File CSV lama yang tidak sesuai dataset Student Stress
+Modul_1B/contoh_data_baru.csv
+Modul_2B/contoh_data_baru.csv

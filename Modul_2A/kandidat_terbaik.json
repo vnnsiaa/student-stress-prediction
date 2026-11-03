@@ -1,0 +1,89 @@
+{
+  "model": "qwen/qwen3.8-27b",
+  "temperature": 0,
+  "max_tokens": 128,
+  "labels": [
+    "High",
+    "Low",
+    "Moderate"
+  ],
+  "system_prompt": "Kamu adalah sistem klasifikasi tingkat stres mahasiswa\nberdasarkan pola gaya hidup sehari-hari.\n\nTugasmu adalah memprediksi Stress_Level berdasarkan\nenam fitur berikut:\n\n1. Study_Hours_Per_Day:\n   Jumlah jam belajar per hari.\n\n2. Extracurricular_Hours_Per_Day:\n   Jumlah jam ekstrakurikuler per hari.\n\n3. Sleep_Hours_Per_Day:\n   Jumlah jam tidur per hari.\n\n4. Social_Hours_Per_Day:\n   Jumlah jam bersosialisasi per hari.\n\n5. Physical_Activity_Hours_Per_Day:\n   Jumlah jam aktivitas fisik per hari.\n\n6. GPA:\n   Indeks prestasi akademik mahasiswa.\n\nTerdapat tiga kelas:\n\nHigh:\nTingkat stres tinggi.\n\nModerate:\nTingkat stres sedang.\n\nLow:\nTingkat stres rendah.\n\nGunakan kombinasi seluruh indikator\nuntuk memprediksi kategori yang sesuai.\n\nKlasifikasi ini berdasarkan data gaya hidup,\nbukan diagnosis medis atau psikologis.\n\nATURAN OUTPUT:\n\nJawab HANYA dengan salah satu label berikut:\n\nHigh\nModerate\nLow\n\nJangan memberikan penjelasan.\nJangan menambahkan tanda baca.\nJangan menulis teks selain label.\n\nATURAN KLASIFIKASI BERDASARKAN DATA TRAINING:\n|--- Study_Hours_Per_Day <= 8.05\n|   |--- Study_Hours_Per_Day <= 5.95\n|   |   |--- Sleep_Hours_Per_Day <= 5.95\n|   |   |   |--- class: High\n|   |   |--- Sleep_Hours_Per_Day >  5.95\n|   |   |   |--- class: Low\n|   |--- Study_Hours_Per_Day >  5.95\n|   |   |--- Sleep_Hours_Per_Day <= 5.95\n|   |   |   |--- class: High\n|   |   |--- Sleep_Hours_Per_Day >  5.95\n|   |   |   |--- class: Moderate\n|--- Study_Hours_Per_Day >  8.05\n|   |--- class: High\n\n\nGunakan percabangan aturan di atas sesuai nilai fitur mahasiswa. Contoh few-shot dapat membantu menentukan label akhir. Jawab hanya High, Moderate, atau Low.",
+  "few_shot": [
+    {
+      "data": {
+        "Study_Hours_Per_Day": 8.1,
+        "Extracurricular_Hours_Per_Day": 0.7,
+        "Sleep_Hours_Per_Day": 5.1,
+        "Social_Hours_Per_Day": 1.7,
+        "Physical_Activity_Hours_Per_Day": 8.4,
+        "GPA": 3.21
+      },
+      "label": "High"
+    },
+    {
+      "data": {
+        "Study_Hours_Per_Day": 9.8,
+        "Extracurricular_Hours_Per_Day": 1.7,
+        "Sleep_Hours_Per_Day": 6.6,
+        "Social_Hours_Per_Day": 3.0,
+        "Physical_Activity_Hours_Per_Day": 2.9,
+        "GPA": 3.58
+      },
+      "label": "High"
+    },
+    {
+      "data": {
+        "Study_Hours_Per_Day": 5.1,
+        "Extracurricular_Hours_Per_Day": 0.3,
+        "Sleep_Hours_Per_Day": 6.3,
+        "Social_Hours_Per_Day": 0.2,
+        "Physical_Activity_Hours_Per_Day": 12.1,
+        "GPA": 2.55
+      },
+      "label": "Low"
+    },
+    {
+      "data": {
+        "Study_Hours_Per_Day": 5.0,
+        "Extracurricular_Hours_Per_Day": 0.8,
+        "Sleep_Hours_Per_Day": 9.8,
+        "Social_Hours_Per_Day": 3.7,
+        "Physical_Activity_Hours_Per_Day": 4.7,
+        "GPA": 2.69
+      },
+      "label": "Low"
+    },
+    {
+      "data": {
+        "Study_Hours_Per_Day": 6.3,
+        "Extracurricular_Hours_Per_Day": 0.0,
+        "Sleep_Hours_Per_Day": 8.6,
+        "Social_Hours_Per_Day": 3.2,
+        "Physical_Activity_Hours_Per_Day": 5.9,
+        "GPA": 3.14
+      },
+      "label": "Moderate"
+    },
+    {
+      "data": {
+        "Study_Hours_Per_Day": 6.3,
+        "Extracurricular_Hours_Per_Day": 3.2,
+        "Sleep_Hours_Per_Day": 9.7,
+        "Social_Hours_Per_Day": 0.7,
+        "Physical_Activity_Hours_Per_Day": 4.1,
+        "GPA": 2.65
+      },
+      "label": "Moderate"
+    }
+  ],
+  "metode": "Iterasi 4 - Few-shot + Decision Tree",
+  "hasil_validasi": {
+    "iterasi": "Iterasi 4 - Few-shot + Decision Tree",
+    "model": "qwen/qwen3.8-27b",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "invalid": 0,
+    "persen_invalid": 0.0,
+    "n": 30
+  }
+}
